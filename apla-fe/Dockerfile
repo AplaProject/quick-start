@@ -1,7 +1,7 @@
 FROM debian:stretch-slim
 
-ENV FRONTEND_REPO_URL https://github.com/GenesisKernel/genesis-front
-ENV FRONTEND_BRANCH v0.8.6-RC
+ENV FRONTEND_REPO_URL https://github.com/AplaProject/apla-front
+ENV FRONTEND_BRANCH v0.9.2
 ENV NODEJS_SETUP_SCRIPT_URL https://deb.nodesource.com/setup_8.x
 
 RUN apt-get update -y && \

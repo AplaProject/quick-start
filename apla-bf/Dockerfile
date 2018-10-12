@@ -6,7 +6,7 @@ ENV GOLANG_VER 1.11
 ENV NODEJS_SETUP_SCRIPT_URL https://deb.nodesource.com/setup_8.x
 ENV BACKEND_GO_URL github.com/GenesisKernel/go-genesis
 ENV BACKEND_BRANCH 1.0.4
-ENV FRONTEND_REPO_URL https://github.com/GenesisKernel/genesis-front
+ENV FRONTEND_REPO_URL https://github.com/AplaProject/apla-front
 ENV FRONTEND_BRANCH v0.9.2
 ENV SCRIPTS_REPO_URL https://github.com/blitzstern5/genesis-scripts
 ENV SCRIPTS_BRANCH develop
