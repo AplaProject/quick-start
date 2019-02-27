@@ -1,8 +1,8 @@
 FROM debian:stretch-slim
 
-ENV FRONTEND_REPO_URL https://github.com/GenesisKernel/genesis-front
-ENV FRONTEND_BRANCH v0.8.6-RC
-ENV NODEJS_SETUP_SCRIPT_URL https://deb.nodesource.com/setup_8.x
+ENV FRONTEND_REPO_URL https://github.com/AplaProject/apla-front
+ENV FRONTEND_BRANCH v0.11.1
+ENV NODEJS_SETUP_SCRIPT_URL https://deb.nodesource.com/setup_10.x
 
 RUN apt-get update -y && \
     apt-get install -y nginx curl git gnupg2 && \
