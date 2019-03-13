@@ -6,7 +6,7 @@ PREV_VERSION="0.8.1"
 VERSION="0.9.0"
 SED_E="sed -E"
 
-USE_PRODUCT="genesis"
+USE_PRODUCT="apla"
 
 if [ "$USE_PRODUCT" = "apla" ]; then
     PRODUCT_BRAND_NAME="Apla"
