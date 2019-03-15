@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-ENV BLEX_REPO_URL https://github.com/GenesisKernel/blockexplorer
+ENV BLEX_REPO_URL https://github.com/AplaProject/blockexplorer
 ENV BLEX_BRANCH v0.3.2
 ENV SCRIPTS_REPO_URL https://github.com/blitzstern5/genesis-scripts
 ENV SCRIPTS_BRANCH v0.2.4
