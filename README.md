@@ -1,21 +1,21 @@
-About Genesis
+About Apla
 =============
 
-Genesis is an open source blockchain platform which implemented as blockchain network consisting of nodes communicating each other. Each node is backend service having own database and can be interacted by the end user with a client or web UI.
+Apla is an open source blockchain platform which implemented as blockchain network consisting of nodes communicating each other. Each node is backend service having own database and can be interacted by the end user with a client or web UI.
 
-The goal of this quick start solution is to run a local testing network of several Genesis nodes (backends with GUI clients) to give the end user an idea of how Genesis blockchain works and provide usage examples of graphical interface elements as well as smart-contracts.
+The goal of this quick start solution is to run a local testing network of several Apla nodes (backends with GUI clients) to give the end user an idea of how Apla blockchain works and provide usage examples of graphical interface elements as well as smart-contracts.
 
 The backend-side (backend itsef and database engine) software runs in docker containers and clients run natively on the host system side.
-As soon as clients start user can interact with local testing Genesis blockchain network.
+As soon as clients start user can interact with local testing Apla blockchain network.
 
 Usage
 =====
 
-Currently Genesis quick start was tested on Mac and Linux.
+Currently Apla quick start was tested on Mac and Linux.
 Windows support is coming.
 
-Use manage.sh to manage Genesis testbed on Linux/Mac and manage.exe to
-manage Genesis testbed on Windows.
+Use manage.sh to manage Apla testbed on Linux/Mac and manage.exe to
+manage Apla testbed on Windows.
 
 ### Linux/Mac
 
@@ -32,8 +32,8 @@ on Linux with sudo-enabled account:
 sudo ./manage.sh install 5
 ```
 
-This will download and install all required software (docker if it's not installed yet, docker containers with Genesis backends and databases and Genesis clients)
-and start 5 Genesis backend instances and 5 accordingly connected Genesis clients.
+This will download and install all required software (docker if it's not installed yet, docker containers with Apla backends and databases and Apla clients)
+and start 5 Apla backend instances and 5 accordingly connected Apla clients.
 
 To stop clients and to stop and delete docker containers run this command:
 
@@ -104,7 +104,7 @@ on Linux with sudo-enabled account:
 sudo ./manage start-clients
 ```
 
-To reinstall (delete all Genesis-related containers and run installation again with the last installation parameters) run:
+To reinstall (delete all Apla-related containers and run installation again with the last installation parameters) run:
 
 on Mac with Admin account:
 ```shell
@@ -117,12 +117,11 @@ sudo ./manage reinstall
 
 ### Windows
 
-Please see [Genesis Quick Start for Windows](https://github.com/GenesisKernel/quick-start-win)
 
 Client Application
 ==================
 
-A password is required to confirm transactions. The default password is 'genesis'.
+A password is required to confirm transactions. The default password is 'default'.
 
 Exposed ports
 =============
@@ -174,10 +173,8 @@ Initial support of Block Explorer was implemented. The default host port for it 
 Useful Links
 ============
 
-* [Genesis Quick Start for Windows](https://github.com/GenesisKernel/quick-start-win)
 
-* [Genesis Applications](https://genesiskernel.github.io/apps/)
 
-* [Genesis Blockchain](https://github.com/GenesisKernel/go-genesis)
+* [Apla Blockchain](https://github.com/AplaProject/go-apla)
 
-* [Genesis Frontend](https://github.com/GenesisKernel/genesis-front)
+* [Apla Frontend](https://github.com/AplaProject/apla-front)

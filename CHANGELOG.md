@@ -1,3 +1,8 @@
+## Version 0.10.0 / 2019-Nov-05 02:12
+* Update backend to v3.0.0
+* Update frontend to v2.2.1
+* Update application to v2.0.0
+
 ## Version 0.9.4 / 2019-Apr-09 04:27
 * Update scripts to v0.2.5
 * Update block explorer to v0.3.3
