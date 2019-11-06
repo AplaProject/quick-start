@@ -7083,7 +7083,7 @@ pre_command() {
         (cd "$SCRIPT_DIR" \
             && docker build -t $RQ_CONT_NAME -f $RQ_CONT_BUILD_DIR/Dockerfile $RQ_CONT_BUILD_DIR/.)
         (cd "$SCRIPT_DIR" \
-            && docker build -t $DB_CONT_NAME -f $DB_CONT_BUILD_DIR/Dockerfile $DB_CONT_BUILD_DIR/.)
+            && docker build -t $BF_CONT_NAME -f $BF_CONT_BUILD_DIR/Dockerfile $BF_CONT_BUILD_DIR/.)
         (cd "$SCRIPT_DIR" \
             && docker build -t $BLEX_CONT_NAME -f $BLEX_CONT_BUILD_DIR/Dockerfile $BLEX_CONT_BUILD_DIR/.)
         ;;
