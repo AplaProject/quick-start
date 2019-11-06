@@ -7119,7 +7119,11 @@ pre_command() {
         ;;
 
     build-tag-push-all-images)
-        "$0" build-cf-image \
+        update_be_dockerfile \
+        && update_bf_dockerfile \
+        && update_blex_dockerfile \
+        && update_fe_dockerfile \
+        && "$0" build-cf-image \
             && "$0" tag-local-cf-image \
             && "$0" push-cf-image \
         && "$0" build-db-image \
@@ -7133,11 +7137,7 @@ pre_command() {
             && "$0" push-blex-image \
         && "$0" build-bf-image \
             && "$0" tag-local-bf-image \
-            && "$0" push-bf-image \
-        update_be_dockerfile \
-        update_bf_dockerfile \
-        update_blex_dockerfile \
-        update_fe_dockerfile
+            && "$0" push-bf-image
         ;;
 
     dates)

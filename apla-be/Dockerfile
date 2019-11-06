@@ -2,7 +2,7 @@ FROM debian:stretch-slim
 
 ENV GOPATH /go
 ENV PATH /go/bin:/usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-ENV GOLANG_VER 1.11.5
+ENV GOLANG_VER 1.13.4
 ENV NODEJS_SETUP_SCRIPT_URL https://deb.nodesource.com/setup_10.x
 ENV BACKEND_GO_URL github.com/AplaProject/go-apla
 ENV BACKEND_BRANCH develop
