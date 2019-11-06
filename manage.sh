@@ -2,11 +2,11 @@
 
 ### Configuration ### begin ###
 
-PREV_VERSION="0.9.5"
+PREV_VERSION="0.9.4"
 VERSION="0.10.0"
 SED_E="sed -E"
 
-USE_PRODUCT="genesis"
+USE_PRODUCT="apla"
 
 if [ "$USE_PRODUCT" = "apla" ]; then
     PRODUCT_BRAND_NAME="Apla"
@@ -14,7 +14,7 @@ else
     PRODUCT_BRAND_NAME="Genesis"
 fi
 
-GOLANG_VER="1.11.5"
+GOLANG_VER="1.13.4"
 NODEJS_SETUP_SCRIPT_URL="https://deb.nodesource.com/setup_10.x"
 
 BACKEND_BRANCH="develop"
@@ -29,9 +29,9 @@ GAP_BETWEEN_BLOCKS=8
 MAX_NUM_OF_NODES=5
 
 if [ "$USE_PRODUCT" = "apla" ]; then
-    FAST_INSTALL_DATA_URL="https://github.com/blitzstern5/quick-start-data/raw/master/apla/0.9.4/apla-qs-0.9.4-fast-install-data-20190403060559-1-nodes.tar.gz"
+    FAST_INSTALL_DATA_URL="https://github.com/blitzstern5/quick-start-data/raw/master/apla/0.10.0/apla-qs-0.10.0-fast-install-data-20191105040600-1-nodes.tar.gz"
 else
-    FAST_INSTALL_DATA_URL="https://github.com/blitzstern5/quick-start-data/raw/master/genesis/0.9.4/genesis-qs-0.9.4-fast-install-data-20190403052958-1-nodes.tar.gz"
+    FAST_INSTALL_DATA_URL="https://github.com/blitzstern5/quick-start-data/raw/master/genesis/0.10.0/genesis-qs-0.10.0-fast-install-data-20191105040600-1-nodes.tar.gz"
 fi    
 FAST_INSTALL_DATA_BASENAME="$(basename "$FAST_INSTALL_DATA_URL")"
 
@@ -86,7 +86,7 @@ if [ "$USE_PRODUCT" = "apla" ]; then
 else
     FRONTEND_REPO_URL="https://github.com/GenesisKernel/genesis-front"
 fi
-FRONTEND_BRANCH="v0.11.1"
+FRONTEND_BRANCH="v2.2.1"
 
 SCRIPTS_REPO_URL="https://github.com/blitzstern5/genesis-scripts"
 SCRIPTS_BRANCH="v0.2.5"
@@ -159,20 +159,20 @@ if [ "$USE_PRODUCT" = "apla" ]; then
     CLIENT_MAC_PROCESS_NAME="Apla"
     CLIENT_LINUX_PROCESS_NAME="apla-front"
     CLIENT_APP_NAME="Apla"
-    CLIENT_DMG_DL_URL="https://github.com/AplaProject/apla-front/releases/download/v0.11.1/Apla-0.11.1.dmg"
+    CLIENT_DMG_DL_URL="https://github.com/AplaProject/apla-front/releases/download/v2.2.1/Apla-2.2.1.dmg"
     CLIENT_MAC_APP_DIR_SIZE_M=246 # to update run 'du -sm /Applications/Genesis.app'
     CLIENT_MAC_APP_DIR="/Applications/Apla.app"
     CLIENT_MAC_APP_BIN="/Applications/Apla.app/Contents/MacOS/Apla"
-    CLIENT_APPIMAGE_DL_URL="https://github.com/AplaProject/apla-front/releases/download/v0.11.1/apla-front-0.11.1-x86_64.AppImage"
+    CLIENT_APPIMAGE_DL_URL="https://github.com/AplaProject/apla-front/releases/download/v2.2.1/apla-front-2.2.1-x86_64.AppImage"
 else
     CLIENT_MAC_PROCESS_NAME="Genesis"
     CLIENT_LINUX_PROCESS_NAME="genesis-front"
     CLIENT_APP_NAME="Genesis"
-    CLIENT_DMG_DL_URL="https://github.com/GenesisKernel/genesis-front/releases/download/v0.11.1/Genesis-0.11.1.dmg"
+    CLIENT_DMG_DL_URL="https://github.com/GenesisKernel/genesis-front/releases/download/v2.2.1/Genesis-2.2.1.dmg"
     CLIENT_MAC_APP_DIR_SIZE_M=246 # to update run 'du -sm /Applications/Genesis.app'
     CLIENT_MAC_APP_DIR="/Applications/Genesis.app"
     CLIENT_MAC_APP_BIN="/Applications/Genesis.app/Contents/MacOS/Genesis"
-    CLIENT_APPIMAGE_DL_URL="https://github.com/GenesisKernel/genesis-front/releases/download/v0.11.1/genesis-front-0.11.1-x86_64.AppImage"
+    CLIENT_APPIMAGE_DL_URL="https://github.com/GenesisKernel/genesis-front/releases/download/v2.2.1/genesis-front-2.2.1-x86_64.AppImage"
 fi
 CLIENT_DMG_BASENAME="$(basename "$(echo "$CLIENT_DMG_DL_URL" | $SED_E -n 's/^(.*\.dmg)(\?[^?]*)?$/\1/gp')")"
 CLIENT_APPIMAGE_BASENAME="$(basename "$(echo "$CLIENT_APPIMAGE_DL_URL" | $SED_E -n 's/^(.*\.AppImage)(\?[^?]*)?$/\1/gp')")"
@@ -1537,7 +1537,8 @@ check_db_exists() {
         && echo "DB name isn't set" && return 1
     check_cont $DB_CONT_NAME > /dev/null; [ $? -ne 0 ] \
         && echo "DB container isn't available" && return 2
-    local db; db=$(docker exec -ti $DB_CONT_NAME bash -c "sudo -u postgres psql -lqt" | $SED_E -n "s/^[^e]*($db_name)[^|]+.*$/\1/gp")
+    local db cmd
+    db=$(docker exec -ti $DB_CONT_NAME bash -c "sudo -u postgres psql -lqt" | $SED_E -n "s/^[^e]*($db_name)[^|]+.*$/\1/gp")
     [ -z "$db" ] && echo "DB '$db_name' doesn't exist" && return 3
     return 0
 }
@@ -6402,6 +6403,16 @@ pre_command() {
 
 
     ### Database ### begin ###
+
+    check-db-exists)
+        shift
+        check_db_exists $@
+        ;;
+
+    wait-db-exists)
+        shift
+        wait_db_exists $@
+        ;;
 
     create-dbs)
         num=""; wps=""; cps=""; dbp=""; blexp=""
