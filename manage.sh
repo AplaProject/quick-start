@@ -7118,6 +7118,22 @@ pre_command() {
         done
         ;;
 
+    tag-all-local-images)
+         "$0" tag-local-cf-image \
+            && "$0" tag-local-db-image \
+            && "$0" tag-local-rq-image \
+            && "$0" tag-local-blex-image \
+            && "$0" tag-local-bf-image
+	;;
+
+    push-all-images)
+         "$0" push-cf-image \
+            && "$0" push-db-image \
+            && "$0" push-rq-image \
+            && "$0" push-blex-image \
+            && "$0" push-bf-image
+	;;
+
     build-tag-push-all-images)
         update_be_dockerfile \
         && update_bf_dockerfile \
